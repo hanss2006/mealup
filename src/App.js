@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import MealUp from './components/mealup/MealUp'
 import './bootstrap.css';
