@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import AuthenticationService from "./AuthenticationService";
 import MealDataService from "../../api/mealup/MealDataService";
+import moment from 'moment';
 
 
 class ListMealComponent extends Component {
@@ -18,6 +19,9 @@ class ListMealComponent extends Component {
         }
     }
 
+    componentWillUnmount() {
+    }
+
     componentDidMount() {
         let username = AuthenticationService.getLoggedInUserName();
         MealDataService.retrieveAllMeals(username).then(
@@ -32,7 +36,7 @@ class ListMealComponent extends Component {
             <>
                 <h1>Meal list</h1>
                 <div className="container">
-                    <table style={{captionSide: 'top'}}>
+                    <table className="table" style={{captionSide: 'top'}}>
                         <thead>
                         <tr>
                             <th>Description</th>
@@ -47,7 +51,7 @@ class ListMealComponent extends Component {
                                     <tr key={meal.id}>
                                         <td>{meal.description}</td>
                                         <td>{meal.calories}</td>
-                                        <td>{meal.mealDate.toString()}</td>
+                                        <td>{moment(meal.mealDate).format('DD.MM.YYYY')}</td>
                                     </tr>
                             )
                         }
