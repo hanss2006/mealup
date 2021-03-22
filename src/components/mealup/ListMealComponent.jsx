@@ -42,6 +42,7 @@ class ListMealComponent extends Component {
                             <th>Description</th>
                             <th>Calories</th>
                             <th>Date</th>
+                            <th>Delete</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -52,6 +53,7 @@ class ListMealComponent extends Component {
                                         <td>{meal.description}</td>
                                         <td>{meal.calories}</td>
                                         <td>{moment(meal.mealDate).format('DD.MM.YYYY')}</td>
+                                        <td><button className="btn btn-warning">Delete</button></td>
                                     </tr>
                             )
                         }
