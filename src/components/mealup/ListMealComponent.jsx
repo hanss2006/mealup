@@ -8,21 +8,32 @@ class ListMealComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            meals:
-                [
-/*
-                    {id: 1, description: 'Potato', calories: 100, mealDate: new Date()},
-                    {id: 2, description: 'Beans', calories: 50, mealDate: new Date()},
-                    {id: 3, description: 'Sandwich', calories: 150, mealDate: new Date()}
-*/
-                ]
+            meals: [],
+            message: null
         }
+        this.deleteMealClicked = this.deleteMealClicked.bind(this);
+        this.refreshMeals = this.refreshMeals.bind(this);
     }
 
     componentWillUnmount() {
     }
 
     componentDidMount() {
+        this.refreshMeals();
+    }
+
+    deleteMealClicked(id){
+        let username = AuthenticationService.getLoggedInUserName();
+        MealDataService.deleteMeal(username, id)
+            .then(
+                response => {
+                    this.setState({message : `Delete of meal ${id}`});
+                    this.refreshMeals();
+                }
+            )
+    }
+
+    refreshMeals(){
         let username = AuthenticationService.getLoggedInUserName();
         MealDataService.retrieveAllMeals(username).then(
             response => {
@@ -35,6 +46,7 @@ class ListMealComponent extends Component {
         return (
             <>
                 <h1>Meal list</h1>
+                {this.state.message && <div className="alert alert-success">{this.state.message}</div>}
                 <div className="container">
                     <table className="table" style={{captionSide: 'top'}}>
                         <thead>
@@ -53,7 +65,7 @@ class ListMealComponent extends Component {
                                         <td>{meal.description}</td>
                                         <td>{meal.calories}</td>
                                         <td>{moment(meal.mealDate).format('DD.MM.YYYY')}</td>
-                                        <td><button className="btn btn-warning">Delete</button></td>
+                                        <td><button className="btn btn-warning" onClick={()=> this.deleteMealClicked(meal.id)}>Delete</button></td>
                                     </tr>
                             )
                         }
