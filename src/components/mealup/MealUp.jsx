@@ -8,6 +8,7 @@ import FooterComponent  from "./FooterComponent.jsx";
 import LogoutComponent from "./LogoutComponent";
 import WelcomeComponent from "./WelcomeComponent";
 import ErrorComponent from "./ErrorComponent";
+import MealComponent from "./MealComponent";
 
 class MealUp extends Component {
     render() {
@@ -19,6 +20,7 @@ class MealUp extends Component {
                         <Route exact path="/" component={LoginComponent}/>
                         <Route path="/login" component={LoginComponent}/>
                         <AuthenticatedRoute path="/welcome/:name" component={WelcomeComponent}/>
+                        <AuthenticatedRoute path="/meals/:id" component={MealComponent}/>
                         <AuthenticatedRoute path="/meals" component={ListMealComponent}/>
                         <AuthenticatedRoute path="/logout" component={LogoutComponent}/>
                         <Route component={ErrorComponent}/>

@@ -11,6 +11,7 @@ class ListMealComponent extends Component {
             meals: [],
             message: null
         }
+        this.updateMealClicked = this.updateMealClicked.bind(this);
         this.deleteMealClicked = this.deleteMealClicked.bind(this);
         this.refreshMeals = this.refreshMeals.bind(this);
     }
@@ -20,6 +21,10 @@ class ListMealComponent extends Component {
 
     componentDidMount() {
         this.refreshMeals();
+    }
+
+    updateMealClicked(id){
+        this.props.history.push(`/meals/${id}`);
     }
 
     deleteMealClicked(id){
@@ -54,6 +59,7 @@ class ListMealComponent extends Component {
                             <th>Description</th>
                             <th>Calories</th>
                             <th>Date</th>
+                            <th>Update</th>
                             <th>Delete</th>
                         </tr>
                         </thead>
@@ -65,6 +71,7 @@ class ListMealComponent extends Component {
                                         <td>{meal.description}</td>
                                         <td>{meal.calories}</td>
                                         <td>{moment(meal.mealDate).format('DD.MM.YYYY')}</td>
+                                        <td><button className="btn btn-success" onClick={()=> this.updateMealClicked(meal.id)}>Update</button></td>
                                         <td><button className="btn btn-warning" onClick={()=> this.deleteMealClicked(meal.id)}>Delete</button></td>
                                     </tr>
                             )
