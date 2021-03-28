@@ -14,9 +14,7 @@ class ListMealComponent extends Component {
         this.updateMealClicked = this.updateMealClicked.bind(this);
         this.deleteMealClicked = this.deleteMealClicked.bind(this);
         this.refreshMeals = this.refreshMeals.bind(this);
-    }
-
-    componentWillUnmount() {
+        this.addMealClicked = this.addMealClicked.bind(this);
     }
 
     componentDidMount() {
@@ -26,6 +24,11 @@ class ListMealComponent extends Component {
     updateMealClicked(id){
         this.props.history.push(`/meals/${id}`);
     }
+
+    addMealClicked(){
+        this.props.history.push(`/meals/-1`);
+    }
+
 
     deleteMealClicked(id){
         let username = AuthenticationService.getLoggedInUserName();
@@ -70,7 +73,7 @@ class ListMealComponent extends Component {
                                     <tr key={meal.id}>
                                         <td>{meal.description}</td>
                                         <td>{meal.calories}</td>
-                                        <td>{moment(meal.mealDate).format('DD.MM.YYYY')}</td>
+                                        <td>{moment(meal.mealDate).format('YYYY-MM-DD')}</td>
                                         <td><button className="btn btn-success" onClick={()=> this.updateMealClicked(meal.id)}>Update</button></td>
                                         <td><button className="btn btn-warning" onClick={()=> this.deleteMealClicked(meal.id)}>Delete</button></td>
                                     </tr>
@@ -78,6 +81,9 @@ class ListMealComponent extends Component {
                         }
                         </tbody>
                     </table>
+                    <div className="row">
+                        <button className="btn btn-success" onClick={this.addMealClicked}>Add</button>
+                    </div>
                 </div>
             </>
         )

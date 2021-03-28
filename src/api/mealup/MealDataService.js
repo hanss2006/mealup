@@ -12,6 +12,16 @@ class MealDataService {
     deleteMeal(name, id){
         return axios.delete(`http://localhost:8080/users/${name}/meals/${id}`);
     }
+
+    updateMeal(name, id, meal){
+        return axios.put(`http://localhost:8080/users/${name}/meals/${id}`, meal);
+    }
+
+    createMeal(name, meal){
+        return axios.post(`http://localhost:8080/users/${name}/meals/`, meal);
+    }
+
+
 }
 
 export default new MealDataService()
