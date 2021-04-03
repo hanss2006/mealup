@@ -1,4 +1,5 @@
 {
+  "homepage": "http://localhost:8080/meal-up-backend-0.0.1-SNAPSHOT",
   "name": "meal-up",
   "version": "0.1.0",
   "private": true,
