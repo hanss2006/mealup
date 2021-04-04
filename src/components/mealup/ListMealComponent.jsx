@@ -22,11 +22,11 @@ class ListMealComponent extends Component {
     }
 
     updateMealClicked(id){
-        this.props.history.push(`/meals/${id}`);
+        this.props.history.push(`/meal_up_backend_war/meals/${id}`);
     }
 
     addMealClicked(){
-        this.props.history.push(`/meals/-1`);
+        this.props.history.push(`/meal_up_backend_war/meals/-1`);
     }
 
 

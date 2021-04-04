@@ -8,7 +8,7 @@ class WelcomeComponent extends Component {
                 <h1>Welcome!</h1>
                 <div className="container">
                     Welcome {this.props.match.params.name}.
-                    You can edit list <Link to="/meals">here</Link>
+                    You can edit list <Link to="/meal_up_backend_war/meals">here</Link>
                 </div>
             </>
         )

@@ -17,12 +17,12 @@ class MealUp extends Component {
                 <Router>
                     <HeaderComponent/>
                     <Switch>
-                        <Route exact path="/" component={LoginComponent}/>
-                        <Route path="/login" component={LoginComponent}/>
-                        <AuthenticatedRoute path="/welcome/:name" component={WelcomeComponent}/>
-                        <AuthenticatedRoute path="/meals/:id" component={MealComponent}/>
-                        <AuthenticatedRoute path="/meals" component={ListMealComponent}/>
-                        <AuthenticatedRoute path="/logout" component={LogoutComponent}/>
+                        <Route exact path="/meal_up_backend_war/" component={LoginComponent}/>
+                        <Route path="/meal_up_backend_war/login" component={LoginComponent}/>
+                        <AuthenticatedRoute path="/meal_up_backend_war/welcome/:name" component={WelcomeComponent}/>
+                        <AuthenticatedRoute path="/meal_up_backend_war/meals/:id" component={MealComponent}/>
+                        <AuthenticatedRoute path="/meal_up_backend_war/meals" component={ListMealComponent}/>
+                        <AuthenticatedRoute path="/meal_up_backend_war/logout" component={LogoutComponent}/>
                         <Route component={ErrorComponent}/>
                     </Switch>
                     <FooterComponent/>

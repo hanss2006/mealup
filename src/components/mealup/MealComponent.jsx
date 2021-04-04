@@ -54,10 +54,10 @@ class MealComponent extends Component {
 
         if (this.state.id === -1) {
             MealDataService.createMeal(username, meal)
-                .then(() => this.props.history.push('/meals'));
+                .then(() => this.props.history.push('/meal_up_backend_war/meals'));
         } else {
             MealDataService.updateMeal(username, this.state.id, meal)
-                .then(() => this.props.history.push('/meals'));
+                .then(() => this.props.history.push('/meal_up_backend_war/meals'));
         }
     }
 
